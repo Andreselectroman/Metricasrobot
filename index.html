@@ -5,7 +5,7 @@
 <b>BUEN DIA AGRADECEMOS TU CONTRIBUCION INGRESA PORFAVOR LA CANTIDAD DE TU DONATIVO Y DESPUES EL METODO DE PAGO, ESTE SITIO MANEJA BOTON DE PAGOS SEGUROS GRACIAS</b>.
 <pre>
 Deseo donar:
-<select name="producto" id="producto">
+<select id="producto" name="producto" onchange="ShowSelected();">
   <option value="" disabled selected>Seleccione</option>
 <option value="1">1</option>
 <option value="2">2</option>
@@ -113,6 +113,16 @@ Deseo donar:
 <script src="https://pay.payphonetodoesposible.com/api/button/js?appId=WmYI0u1kG9I53hHNGElA"></script>
 <script>
 
+function ShowSelected()
+{
+/* Para obtener el valor */
+var cod = document.getElementById("producto").value;
+alert(cod);
+ 
+/* Para obtener el texto */
+var combo = document.getElementById("producto");
+var selected = combo.options[combo.selectedIndex].text;
+alert(selected);
 
 window.onload = function() {
 payphone.Button({
@@ -155,7 +165,7 @@ console.log(err);
 
 }
 }).render("#pp-button");
-
+}
 }
 </script>
 <div id="pp-button"></div>
