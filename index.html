@@ -3,7 +3,7 @@
 </pre>
 Buen dia agradecemos tu contribucion
 <b>INGRESA PORFAVOR LA CANTIDAD DE TU DONATIVO Y DESPUES EL METODO DE PAGO, ESTE SITIO MANEJA BOTON DE PAGOS SEGUROS GRACIAS</b>.
-<select name="" id="" >
+<select name="" id="producto" >
 
 <option value="1">1</option>
 <option value="2">2</option>
@@ -122,8 +122,8 @@ createOrder: function(actions){
 
 //Se ingresan los datos de la transaccion ej. monto, impuestos, etc
 return actions.prepare({
-
-amount: 100,
+var cod = document.getElementById("producto").value;
+amount: cod,
 amountWithoutTax: 100,
 currency: "USD",
 clientTransactionId: "identificador-único"
