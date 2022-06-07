@@ -134,8 +134,8 @@ createOrder: function(actions){
 //Se ingresan los datos de la transaccion ej. monto, impuestos, etc
 return actions.prepare({
 
-amount: selectOption*100,
-amountWithoutTax: selectOption*100,
+amount: selectOption.text*100,
+amountWithoutTax: selectOption.text*100,
 currency: "USD",
 clientTransactionId: "identificador-único"
 });
