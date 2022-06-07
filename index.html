@@ -110,7 +110,7 @@ Deseo donar:
 <pre>
 <script src="https://pay.payphonetodoesposible.com/api/button/js?appId=WmYI0u1kG9I53hHNGElA"></script>
 <script>
-
+var cod = document.getElementById("producto").value;
 window.onload = function() {
 payphone.Button({
 
@@ -126,8 +126,8 @@ createOrder: function(actions){
 //Se ingresan los datos de la transaccion ej. monto, impuestos, etc
 return actions.prepare({
 
-amount: 500,
-amountWithoutTax: 500,
+amount: cod,
+amountWithoutTax: cod,
 currency: "USD",
 clientTransactionId: "identificador-único"
 });
