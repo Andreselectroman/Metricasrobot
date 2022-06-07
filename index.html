@@ -112,12 +112,7 @@ Deseo donar:
 <pre>
 <script src="https://pay.payphonetodoesposible.com/api/button/js?appId=WmYI0u1kG9I53hHNGElA"></script>
 <script>
-var select = document.getElementById('producto');
-select.addEventListener('change',
-  function(){
-    var selectedOption = this.options[select.selectedIndex];
-    console.log(selectedOption.value + ': ' + selectedOption.text);
-  });
+
 
 window.onload = function() {
 payphone.Button({
@@ -128,19 +123,25 @@ token: "QVmPuWcTVFwlSrPhRYAx7s5_4Q91WnpGRo2N4Jn1R_uyX3VmAQit5a1OhVtrWmpwo-97cX-l
 //PARÁMETROS DE CONFIGURACIÓN
 btnHorizontal: true,
 btnCard: true,
-
-createOrder: function(actions){
+var select = document.getElementById('producto');
+select.addEventListener('change',
+  function(){
+    var selectedOption = this.options[select.selectedIndex];
+    console.log(selectedOption.value + ': ' + selectedOption.text);
+  createOrder: function(actions){
 
 //Se ingresan los datos de la transaccion ej. monto, impuestos, etc
 return actions.prepare({
 
-amount: selectOption.text*100,
-amountWithoutTax: selectOption.text*100,
+amount: selectOption*100,
+amountWithoutTax: selectOption*100,
 currency: "USD",
 clientTransactionId: "identificador-único"
 });
 
 },
+  });
+
 onComplete: function(model, actions){
 
 //Se confirma el pago realizado
