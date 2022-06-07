@@ -123,25 +123,19 @@ token: "QVmPuWcTVFwlSrPhRYAx7s5_4Q91WnpGRo2N4Jn1R_uyX3VmAQit5a1OhVtrWmpwo-97cX-l
 //PARÁMETROS DE CONFIGURACIÓN
 btnHorizontal: true,
 btnCard: true,
-var select = document.getElementById('producto');
-select.addEventListener('change',
-  function(){
-    var selectedOption = this.options[select.selectedIndex];
-    console.log(selectedOption.value + ': ' + selectedOption.text);
-  createOrder: function(actions){
+
+createOrder: function(actions){
 
 //Se ingresan los datos de la transaccion ej. monto, impuestos, etc
 return actions.prepare({
 
-amount: selectOption*100,
-amountWithoutTax: selectOption*100,
+amount: 100,
+amountWithoutTax: 100,
 currency: "USD",
 clientTransactionId: "identificador-único"
 });
 
 },
-  });
-
 onComplete: function(model, actions){
 
 //Se confirma el pago realizado
@@ -164,6 +158,3 @@ console.log(err);
 
 }
 </script>
-<div id="pp-button"></div>
-</pre>
-
