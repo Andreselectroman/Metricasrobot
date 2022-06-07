@@ -5,7 +5,8 @@
 <b>BUEN DIA AGRADECEMOS TU CONTRIBUCION INGRESA PORFAVOR LA CANTIDAD DE TU DONATIVO Y DESPUES EL METODO DE PAGO, ESTE SITIO MANEJA BOTON DE PAGOS SEGUROS GRACIAS</b>.
 <pre>
 Deseo donar:
-<select id="producto" onchange="verIndex();">
+<select name="producto" id="producto">
+  <option value="" disabled selected>Seleccione una Provincia...</option>
 <option value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
@@ -107,18 +108,17 @@ Deseo donar:
 <option value="99">99</option>
 </select> dolares </pre>
 
-<script type="text/javascript">
-function verIndex()
-{
-    var lista = document.getElementById("producto");
-    var opcion = lista.selectedIndex;
-    alert("Elegiste la opcion con indice: " + opcion + "la cual contiene el valor: " + lista.options[opcion].firstChild.data);
-}
-</script>
+
 <pre>
 <script src="https://pay.payphonetodoesposible.com/api/button/js?appId=WmYI0u1kG9I53hHNGElA"></script>
 <script>
-var cod = document.getElementById("producto").value;
+var select = document.getElementById('producto');
+select.addEventListener('change',
+  function(){
+    var selectedOption = this.options[select.selectedIndex];
+    console.log(selectedOption.value + ': ' + selectedOption.text);
+  });
+
 window.onload = function() {
 payphone.Button({
 
@@ -134,8 +134,8 @@ createOrder: function(actions){
 //Se ingresan los datos de la transaccion ej. monto, impuestos, etc
 return actions.prepare({
 
-amount: cod*100,
-amountWithoutTax: cod*100,
+amount: selectOption*100,
+amountWithoutTax: selectOption*100,
 currency: "USD",
 clientTransactionId: "identificador-único"
 });
