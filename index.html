@@ -115,11 +115,11 @@ Deseo donar:
 
 function ShowSelected()
 {
-  imagen = document.getElementById("pp-button");	
+ var imagen = document.getElementById("pp-button");	
 	if (imagen == null){
 		
 	} else {
-		padre = imagen.parentNode;
+		var padre = imagen.parentNode;
 		padre.removeChild(imagen);
 	}
  
