@@ -117,19 +117,22 @@ function ShowSelected()
 {
 /* Para obtener el valor */
 var cod = document.getElementById("producto").value;
-var elim document.getElementById("pp-button").outerHTML = "pp-button";
+
  
 /* Para obtener el texto */
 var combo = document.getElementById("producto");
 var selected = combo.options[combo.selectedIndex].text;
+const div = document.createElement("div");
+div.textContent = "Esto es un div insertado con JS.";
 
-  var testData = !!document.getElementById("pp-button");
-            console.log("Is Not null?",testData);
+const app = document.createElement("div"); // <div></div>
+app.id = "app";       // <div id="app"></div>
+app.appendChild(div); // <div id="app"><div>Esto es un div insertado con JS</div></div>
+
 
 payphone.Button({
 
-
-
+//token obtenido desde la consola de developer
 token: "QVmPuWcTVFwlSrPhRYAx7s5_4Q91WnpGRo2N4Jn1R_uyX3VmAQit5a1OhVtrWmpwo-97cX-l2ss0M1RpWvamQV8OpEi1b2SUGclxf84v4sLLM09RTG9B4-_G97heauj5zxOvtwRA68kjEXlgPkfDpm6FVGteYRPVouStzQhX7yIh9Vcn6NhF2AEXuWgHSD-OaBVCqcvflrFBGVhJ-N1Z_rDalt-1-d9vwcmvGmJUUYWK2NBP4ev7gX6tr4wCkRXlj7Y9Hx20UCJ9PKXWaF6YcWOSZ_5WMZVu4RcShURARPeNI1iYWYpHAWVfqylGvuet3hslxJxA2tGpBXnfLqmGBpM7GqQ",
 
 //PARÁMETROS DE CONFIGURACIÓN
@@ -137,10 +140,6 @@ btnHorizontal: true,
 btnCard: true,
 
 createOrder: function(actions){
-  const app = document.createElement("div"); // <div></div>
-app.id = "pp-button";       // <div id="app"></div>
-app.appendChild(div); // <div id="app"><div>Esto es un div insertado con JS</div></div>
-//token obtenido desde la consola de developer
 
 //Se ingresan los datos de la transaccion ej. monto, impuestos, etc
 return actions.prepare({
@@ -174,4 +173,4 @@ console.log(err);
 }
 
 </script>
-
+<div id="pp-button"></div>
