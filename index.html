@@ -115,14 +115,21 @@ Deseo donar:
 
 function ShowSelected()
 {
+  var imagen = document.getElementById("pp-button");	
+	if (!imagen){
+		alert("El elemento selecionado no existe");
+	} else {
+		var padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
 /* Para obtener el valor */
 var cod = document.getElementById("producto").value;
-alert(cod);
+
  
 /* Para obtener el texto */
 var combo = document.getElementById("producto");
 var selected = combo.options[combo.selectedIndex].text;
-alert(selected);
+
 
 
 payphone.Button({
