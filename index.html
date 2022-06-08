@@ -118,12 +118,7 @@ function ShowSelected()
   var testData = !!document.getElementById("pp-button");
 	if (testData != true){
 		alert("El elemento selecionado no existe");
-	} else {
-		var imagen = document.getElementById("pp-button");	
-		var padre = imagen.parentNode;
-		padre.removeChild(imagen);
-	}
-/* Para obtener el valor */
+		/* Para obtener el valor */
 var cod = document.getElementById("producto").value;
 
  
@@ -173,6 +168,12 @@ console.log(err);
 
 }
 }).render("#pp-button");
+	} else {
+		var imagen = document.getElementById("pp-button");	
+		var padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
+
 }
 
 </script>
