@@ -115,6 +115,13 @@ Deseo donar:
 
 function ShowSelected()
 {
+  imagen = document.getElementById("pp-button");	
+	if (!imagen){
+		
+	} else {
+		padre = imagen.parentNode;
+		padre.removeChild(imagen);
+	}
  
 /* Para obtener el valor */
 var cod = document.getElementById("producto").value;
