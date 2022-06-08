@@ -122,12 +122,7 @@ var cod = document.getElementById("producto").value;
 /* Para obtener el texto */
 var combo = document.getElementById("producto");
 var selected = combo.options[combo.selectedIndex].text;
-const div = document.createElement("div");
-div.textContent = "Esto es un div insertado con JS.";
 
-const app = document.createElement("div"); // <div></div>
-app.id = "app";       // <div id="app"></div>
-app.appendChild(div); // <div id="app"><div>Esto es un div insertado con JS</div></div>
 
 
 payphone.Button({
@@ -169,7 +164,7 @@ console.log(err);
 });
 
 }
-}).render("#pp-button");
+}).remplace("#pp-button");
 }
 
 </script>
