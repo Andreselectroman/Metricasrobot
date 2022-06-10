@@ -201,7 +201,11 @@ var cod = document.getElementById("producto").value;
 /* Para obtener el texto */
 var combo = document.getElementById("producto");
 var selected = combo.options[combo.selectedIndex].text;
+var text = ""; 
+var possible = "ABCDEFGHIJKLMN@!)(/&°OPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; 
+for( var i=0; i < 16; i++ ) text += possible.charAt(Math.floor(Math.random() * possible.length)); 
 
+  
 document.getElementById("pp-button").innerHTML="";
 
 payphone.Button({
@@ -221,7 +225,7 @@ return actions.prepare({
 amount: selected*100,
 amountWithoutTax: selected*100,
 currency: "USD",
-clientTransactionId: "identificador-único2"
+clientTransactionId: text
 });
 
 },
