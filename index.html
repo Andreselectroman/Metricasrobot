@@ -74,7 +74,7 @@
                 <div class="col-lg-12">
                     <div class="intro-message">
                         <h1>Bienvenido Gracias por Visitarnos</h1>
-                      <select class="text-primary" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                      <select class="text-primary" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="producto" name="producto" onchange="ShowSelected();">
   <option selected class="text-primary">Selecciona la cantidad de tu donativo en Dolares</option>
 <option value="1">1</option>
 <option value="2">2</option>
@@ -177,7 +177,68 @@
 <option value="99">99</option>
 </select>
 
+<pre>
+<script src="https://pay.payphonetodoesposible.com/api/button/js?appId=WmYI0u1kG9I53hHNGElA"></script>
+<script>
 
+function ShowSelected()
+{
+
+/* Para obtener el valor */
+var cod = document.getElementById("producto").value;
+
+ 
+/* Para obtener el texto */
+var combo = document.getElementById("producto");
+var selected = combo.options[combo.selectedIndex].text;
+
+document.getElementById("pp-button").innerHTML="";
+
+payphone.Button({
+
+//token obtenido desde la consola de developer
+token: "QVmPuWcTVFwlSrPhRYAx7s5_4Q91WnpGRo2N4Jn1R_uyX3VmAQit5a1OhVtrWmpwo-97cX-l2ss0M1RpWvamQV8OpEi1b2SUGclxf84v4sLLM09RTG9B4-_G97heauj5zxOvtwRA68kjEXlgPkfDpm6FVGteYRPVouStzQhX7yIh9Vcn6NhF2AEXuWgHSD-OaBVCqcvflrFBGVhJ-N1Z_rDalt-1-d9vwcmvGmJUUYWK2NBP4ev7gX6tr4wCkRXlj7Y9Hx20UCJ9PKXWaF6YcWOSZ_5WMZVu4RcShURARPeNI1iYWYpHAWVfqylGvuet3hslxJxA2tGpBXnfLqmGBpM7GqQ",
+
+//PARÁMETROS DE CONFIGURACIÓN
+btnHorizontal: true,
+btnCard: true,
+
+createOrder: function(actions){
+
+//Se ingresan los datos de la transaccion ej. monto, impuestos, etc
+return actions.prepare({
+
+amount: selected*100,
+amountWithoutTax: selected*100,
+currency: "USD",
+clientTransactionId: "identificador-único"
+});
+
+},
+onComplete: function(model, actions){
+
+//Se confirma el pago realizado
+actions.confirm({
+id: model.id,
+clientTxId: model.clientTxId
+}).then(function(value){
+
+//EN ESTA SECCIÓN SE RECIBE LA RESPUESTA Y SE MUESTRA AL USUARIO
+
+if (value.transactionStatus == "Approved"){
+alert("Pago " + value.transactionId + " recibido, estado " + value.transactionStatus );
+}
+}).catch(function(err){
+console.log(err);
+});
+
+}
+}).render("#pp-button");
+}
+
+</script>
+
+<div id="pp-button"></div>
 			    
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
