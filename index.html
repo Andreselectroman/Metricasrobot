@@ -243,7 +243,7 @@ if (value.transactionStatus == "Approved"){
 alert("Pago " + value.transactionId + " recibido, estado " + value.transactionStatus );
 }
 }).catch(function(err){
-console.log(err);
+alert("Surgio un error y su pago no fue procesado");
 });
 
 }
